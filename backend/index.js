@@ -175,7 +175,13 @@ app.get('/', (req, res) => {
     res.send('Shopping-Hub API is running');
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Export app for Vercel Serverless Functions
+module.exports = app;
+
+// Only start server if run directly (not required by Vercel)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
