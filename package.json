@@ -1,0 +1,17 @@
+{
+  "name": "shopping-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "mongodb": "^7.1.0",
+    "mongoose": "^9.2.1"
+  }
+}
