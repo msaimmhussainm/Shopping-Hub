@@ -13,5 +13,6 @@
       "source": "/((?!api/|uploads/|assets/|favicon.ico|vite.svg).*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "cleanUrls": true
 }
