@@ -10,8 +10,16 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/assets/(.*)",
+      "destination": "/dist/assets/$1"
+    },
+    {
+      "source": "/vite.svg",
+      "destination": "/dist/vite.svg"
+    },
+    {
+      "source": "/((?!api/|uploads/|assets/).*)",
+      "destination": "/dist/index.html"
     }
   ]
 }
