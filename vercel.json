@@ -10,11 +10,19 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/((?!api/|uploads/).*)",
-      "destination": "/public/$1"
+      "source": "/assets/(.*)",
+      "destination": "/public/assets/$1"
     },
     {
-      "source": "/((?!api/|uploads/).*)",
+      "source": "/vite.svg",
+      "destination": "/public/vite.svg"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/public/favicon.ico"
+    },
+    {
+      "source": "/((?!api/|uploads/|assets/).*)",
       "destination": "/public/index.html"
     }
   ],

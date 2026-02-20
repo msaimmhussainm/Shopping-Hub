@@ -4,6 +4,8 @@ const path = require('path');
 
 try {
     console.log('Starting cross-platform build...');
+    console.log('Current working directory:', process.cwd());
+    console.log('Platform:', process.platform);
 
     // 1. Build Frontend
     console.log('Step 1: Building frontend...');
