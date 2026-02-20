@@ -10,9 +10,8 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/((?!api/|uploads/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "cleanUrls": true
+  ]
 }
