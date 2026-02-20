@@ -1,29 +1,18 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
     },
     {
-      "src": "/uploads/(.*)",
-      "dest": "/api/index.js"
+      "source": "/uploads/(.*)",
+      "destination": "/api/index.js"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/dist/assets/$1"
-    },
-    {
-      "src": "/vite.svg",
-      "dest": "/dist/vite.svg"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/dist/favicon.ico"
-    },
-    {
-      "src": "/((?!api/|uploads/|assets/).*)",
-      "dest": "/dist/index.html"
+      "source": "/((?!api/|uploads/).*)",
+      "destination": "/index.html"
     }
-  ]
+  ],
+  "cleanUrls": true
 }
