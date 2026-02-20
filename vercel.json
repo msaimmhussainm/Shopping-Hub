@@ -10,8 +10,12 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/((?!api/|uploads/|assets/|favicon.ico|vite.svg).*)",
-      "destination": "/index.html"
+      "source": "/((?!api/|uploads/).*)",
+      "destination": "/public/$1"
+    },
+    {
+      "source": "/((?!api/|uploads/).*)",
+      "destination": "/public/index.html"
     }
   ],
   "cleanUrls": true
