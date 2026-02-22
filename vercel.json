@@ -10,15 +10,10 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
+      "handle": "filesystem"
     },
     {
-      "source": "/vite.svg",
-      "destination": "/vite.svg"
-    },
-    {
-      "source": "/((?!api/|uploads/|assets/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
