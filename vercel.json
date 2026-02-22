@@ -10,9 +10,6 @@
       "destination": "/api/index.js"
     },
     {
-      "handle": "filesystem"
-    },
-    {
       "source": "/(.*)",
       "destination": "/frontend/index.html"
     }
