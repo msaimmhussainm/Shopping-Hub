@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useNotification } from '../context/NotificationContext';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// use a relative API path in production so that Vercel serverless functions
+// are automatically routed; during local development fallback to localhost.
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 const AdminLogin = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });

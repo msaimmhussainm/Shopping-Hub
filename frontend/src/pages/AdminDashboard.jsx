@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Package, ShoppingCart, LogOut, Plus, Trash2, Eye, Grid, X, Edit, Clock } from 'lucide-react';
 import { useNotification } from '../context/NotificationContext';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('products');
