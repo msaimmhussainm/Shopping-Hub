@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
     const getFullImageUrl = (img) => {
         if (!img) return '';
-        return img.startsWith('http') ? img : `${API_URL}${img}`;
+        return img.startsWith('http') || img.startsWith('data:') ? img : `${API_URL}${img}`;
     };
 
     useEffect(() => {

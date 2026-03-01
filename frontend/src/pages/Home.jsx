@@ -116,7 +116,7 @@ const Home = () => {
                         ) : null}
 
                         <div className="product-image-container">
-                            <img src={product.image?.startsWith('http') ? product.image : `${API_URL}${product.image}`} alt={product.name} className="product-image" />
+                            <img src={product.image?.startsWith('http') || product.image?.startsWith('data:') ? product.image : `${API_URL}${product.image}`} alt={product.name} className="product-image" />
                             <div style={{
                                 position: 'absolute', inset: 0,
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',

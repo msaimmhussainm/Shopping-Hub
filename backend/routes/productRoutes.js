@@ -4,16 +4,8 @@ const Product = require('../models/Product');
 const multer = require('multer');
 const path = require('path');
 
-// Multer Config
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-
+// Multer Config - Use Memory Storage for Vercel Serverless Function Compatibility
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // Get all products (with optional category filter)
@@ -47,10 +39,15 @@ router.post('/', upload.array('images', 10), async (req, res) => {
         const productData = { ...req.body };
 
         if (req.files && req.files.length > 0) {
+            // Convert to Base64 for Serverless Compatibility
+            const filesAsBase64 = req.files.map(f => {
+                const b64 = Buffer.from(f.buffer).toString('base64');
+                return `data:${f.mimetype};base64,${b64}`;
+            });
             // First image is the main image
-            productData.image = `/uploads/${req.files[0].filename}`;
+            productData.image = filesAsBase64[0];
             // All images are stored in the images array
-            productData.images = req.files.map(f => `/uploads/${f.filename}`);
+            productData.images = filesAsBase64;
         }
 
         const product = new Product(productData);
@@ -67,8 +64,13 @@ router.put('/:id', upload.array('images', 10), async (req, res) => {
         const updateData = { ...req.body };
 
         if (req.files && req.files.length > 0) {
-            updateData.image = `/uploads/${req.files[0].filename}`;
-            updateData.images = req.files.map(f => `/uploads/${f.filename}`);
+            // Convert to Base64
+            const filesAsBase64 = req.files.map(f => {
+                const b64 = Buffer.from(f.buffer).toString('base64');
+                return `data:${f.mimetype};base64,${b64}`;
+            });
+            updateData.image = filesAsBase64[0];
+            updateData.images = filesAsBase64;
         }
 
         const updatedProduct = await Product.findByIdAndUpdate(req.params.id, updateData, { new: true });

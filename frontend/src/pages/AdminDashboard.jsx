@@ -247,7 +247,7 @@ const AdminDashboard = () => {
                                         <tr key={product._id} style={{ borderBottom: '1px solid #e2e8f0' }}>
                                             <td style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                                 <img
-                                                    src={product.image?.startsWith('http') ? product.image : `${API_URL}${product.image}`}
+                                                    src={product.image?.startsWith('http') || product.image?.startsWith('data:') ? product.image : `${API_URL}${product.image}`}
                                                     alt={product.name}
                                                     style={{ width: '48px', height: '48px', borderRadius: '8px', objectFit: 'cover' }}
                                                 />
@@ -483,7 +483,7 @@ const AdminDashboard = () => {
                                             {previews.map((src, index) => (
                                                 <div key={index} style={{ position: 'relative', aspectRatio: '1/1' }}>
                                                     <img
-                                                        src={src.startsWith('http') || src.startsWith('/uploads') ? (src.startsWith('http') ? src : `${API_URL}${src}`) : src}
+                                                        src={src.startsWith('http') || src.startsWith('data:') || src.startsWith('/uploads') ? (src.startsWith('http') || src.startsWith('data:') ? src : `${API_URL}${src}`) : src}
                                                         alt="preview"
                                                         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                                                     />
