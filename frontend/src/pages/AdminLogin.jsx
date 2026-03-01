@@ -25,7 +25,8 @@ const AdminLogin = () => {
             navigate('/admin/dashboard');
         } catch (err) {
             console.error(err);
-            showNotification('Invalid Credentials', 'error');
+            const errorMsg = err.response?.data?.message || err.message || 'Login Failed';
+            showNotification(errorMsg, 'error');
         }
     };
 
