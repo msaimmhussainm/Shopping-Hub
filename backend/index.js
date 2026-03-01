@@ -74,14 +74,17 @@ const seedData = async () => {
     try {
         const adminCount = await Admin.countDocuments();
         if (adminCount === 0) {
-            console.log('Seeding Admin...');
+            const email = 'admin_manager@admin.com';
+            const password = 'mmmm#1234';
+            console.log(`Seeding Admin: ${email}...`);
             const salt = await bcrypt.genSalt(10);
-            const hashedPassword = await bcrypt.hash('mmmm#1234', salt);
+            const hashedPassword = await bcrypt.hash(password, salt);
             await Admin.create({
-                email: 'admin_manager@admin.com',
+                email,
                 password: hashedPassword
             });
-            console.log('Admin seeded.');
+            console.log(`Admin seeded successfully.`);
+            console.log(`Credentials -> Email: ${email}, Password: ${password}`);
         }
 
         const productCount = await Product.countDocuments();
